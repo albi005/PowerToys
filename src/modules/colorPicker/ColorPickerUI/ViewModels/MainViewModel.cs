@@ -16,6 +16,7 @@ using ColorPicker.ViewModelContracts;
 using Common.UI;
 using interop;
 using ManagedCommon;
+using MaterialColorUtilities.ColorAppearance;
 
 namespace ColorPicker.ViewModels
 {
@@ -40,6 +41,7 @@ namespace ColorPicker.ViewModels
         /// Backing field for <see cref="ColorName"/>
         /// </summary>
         private string _colorName;
+        private Hct hct;
 
         [ImportingConstructor]
         public MainViewModel(
@@ -122,6 +124,16 @@ namespace ColorPicker.ViewModels
             }
         }
 
+        public Hct Hct
+        {
+            get => hct;
+            set
+            {
+                hct = value;
+                OnPropertyChanged();
+            }
+        }
+
         public bool ShowColorName
         {
             get => _userSettings.ShowColorName.Value;
@@ -177,6 +189,7 @@ namespace ColorPicker.ViewModels
             ColorBrush = new SolidColorBrush(Color.FromArgb(color.A, color.R, color.G, color.B));
             ColorText = ColorRepresentationHelper.GetStringRepresentation(color, _userSettings.CopiedColorRepresentation.Value, _userSettings.CopiedColorRepresentationFormat.Value);
             ColorName = ColorRepresentationHelper.GetColorNameFromColorIdentifier(ColorNameHelper.GetColorNameIdentifier(color));
+            Hct = Hct.FromInt((uint)color.ToArgb());
         }
 
         /// <summary>

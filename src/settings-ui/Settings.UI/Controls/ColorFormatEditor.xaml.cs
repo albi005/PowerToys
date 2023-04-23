@@ -58,6 +58,9 @@ namespace Microsoft.PowerToys.Settings.UI.Controls
                 new ColorFormatParameter() { Parameter = "%Dv", Description = resourceLoader.GetString("Help_decimal_value_BGR") },
                 new ColorFormatParameter() { Parameter = "%Dr", Description = resourceLoader.GetString("Help_decimal_value_RGB") },
                 new ColorFormatParameter() { Parameter = "%Na", Description = resourceLoader.GetString("Help_color_name") },
+                new ColorFormatParameter() { Parameter = "%Hh", Description = "HCT hue" },
+                new ColorFormatParameter() { Parameter = "%Hc", Description = "HCT chroma" },
+                new ColorFormatParameter() { Parameter = "%Ht", Description = "HCT tone" },
             };
 
             ColorParametersItemsControl.ItemsSource = new List<ColorFormatParameter>
